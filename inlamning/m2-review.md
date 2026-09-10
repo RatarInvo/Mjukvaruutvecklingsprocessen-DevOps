@@ -1,12 +1,12 @@
 ## Vad vi gjorde utanför repot
-Vi skapade ett konto på Exempeltjänsten och aktiverade
-tvåfaktorsautentisering. I webbkonsolen slog vi på inställningen
-"Require review" för vårt projekt. Vi verifierade att inställningen
-fungerar genom att försöka spara utan granskning — det blockerades,
-precis som förväntat. Skärmdumpen nedan visar konsolen efter ändringen.
+Den här labben handlade om att sätta upp branch protection i ett GitHub-repo så att alla ändringar till `main` måste göras via pull requests med godkänd review. Vi skapade två övningsuppdrag (backend-ändring och frontend-stilmall), gjorde PR, granskar och mergar. Sedan simulerar vi en merge-konflikt genom att båda ändrar samma rad på olika brancher, och lärde oss lösa den i terminalen. Slutligen taggades milstolpen med `m2-review` och allt dokumenteras med skärmdumpar och text.
 
 ## Skärmdump
-![Konsolen efter ändringen](m0-exempel-skarmdump.png)
+![Konsolen](screenshot1.png)
+![Konsolen](screenshot2.png)
+![Konsolen](screenshot3.png)
+![Konsolen](screenshot4.png)
+
 
 *Lägg bildfilen i samma mapp (`inlamning/`) och committa den tillsammans
 med texten — `.gitignore` tillåter bilder.*
