@@ -6,6 +6,10 @@ Den här labben handlade om att sätta upp branch protection i ett GitHub-repo s
 ![Konsolen](screenshot2.png)
 ![Konsolen](screenshot3.png)
 ![Konsolen](screenshot4.png)
+![Konsolen](screenshot5.png)
+![Konsolen](screenshot6.png)
+![Konsolen](screenshot7.png)
+![Konsolen](screenshot8.png)
 
 
 *Lägg bildfilen i samma mapp (`inlamning/`) och committa den tillsammans
