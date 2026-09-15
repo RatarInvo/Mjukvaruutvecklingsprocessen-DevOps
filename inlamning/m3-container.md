@@ -19,20 +19,23 @@
 
 ## Skärmdump
 ![Konsolen](./m3-screenshots/screenshot1.png)
-## 
+## Steg 1: curl-anropen som misslyckades utan -p och det som svarade {"status":"ok"} med.
 ![Konsolen](./m3-screenshots/screenshot2.png)
-## 
+## Steg 1: curl-anropen som misslyckades utan -p och det som svarade {"status":"ok"} med.
 ![Konsolen](./m3-screenshots/screenshot3.png)
-## 
+## Steg 1: curl-anropen som misslyckades utan -p och det som svarade {"status":"ok"} med.
 ![Konsolen](./m3-screenshots/screenshot4.png)
-##
+## Steg 3: appen i webbläsaren på port 8080 (i Codespace: den vidarebefordrade adressen) och terminalen där docker compose up visar båda tjänsterna igång.
 ![Konsolen](./m3-screenshots/screenshot5.png)
-## 
-![Konsolen](./m3-screenshots/screenshot6.png)
-## 
+## Steg 3: appen i webbläsaren på port 8080 (i Codespace: den vidarebefordrade adressen) och terminalen där docker compose up visar båda tjänsterna igång.
 ![Konsolen](./m3-screenshots/screenshot7.png)
-## 
+## Steg 4: terminalen med båda find-körningarna /app/app/__pycache__ i utskriften före .dockerignore
 ![Konsolen](./m3-screenshots/screenshot8.png)
-## 
+## Steg 4: terminalen med båda find-körningarna /app/app/__pycache__ i utskriften efter .dockerignore
+![Konsolen](./m3-screenshots/screenshot6.png)
+## Steg : 5 Docker building av frontend och backend
 ![Konsolen](./m3-screenshots/screenshot9.png)
-## 
+## Steg 5: Versions-fliken för ett av paketen, med er egen :latest-push och dess färska tidsstämpel synlig.
+
+## Vad vi gjorde utanför repot
+Vi skapade en token på GitHub → er profilbild → Settings → Developer settings → Personal access tokens → Tokens (classic) → Generate new token → Generate new token (classic) med 90 dagars tidsbegränsning och kryssade i scopet write:packages (som även ger read:packages).
