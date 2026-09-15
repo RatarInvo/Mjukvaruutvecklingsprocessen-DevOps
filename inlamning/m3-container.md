@@ -16,3 +16,23 @@
 
 ## Varför nginx-unprivileged och inte vanliga nginx? Standard-imagen kör som root inuti containern och lyssnar på port 80. Det fungerar i er utvecklingsmiljö (codespace eller lokalt) men kraschar direkt på många plattformar i drift — vår egen frontend dog med mkdir() /var/cache/nginx/... failed (13: Permission denied) när den kördes på Rahti, som av säkerhetsskäl startar varje container som en slumpmässig icke-root-användare. nginx-unprivileged är byggt för att köras som vem som helst och lyssnar därför på 8080 (portar under 1024 kräver root). Välj basimage efter var koden ska köra, inte bara efter vad som råkar funka lokalt.
 ### Svar: För att nginx-unprivileged kör NGINX som icke-root och lyssnar på port 8080, vilket fungerar med Rahtis/OpenShifts säkerhetskrav.
+
+## Skärmdump
+![Konsolen](./m3-screenshots/screenshot1.png)
+## 
+![Konsolen](./m3-screenshots/screenshot2.png)
+## 
+![Konsolen](./m3-screenshots/screenshot3.png)
+## 
+![Konsolen](./m3-screenshots/screenshot4.png)
+##
+![Konsolen](./m3-screenshots/screenshot5.png)
+## 
+![Konsolen](./m3-screenshots/screenshot6.png)
+## 
+![Konsolen](./m3-screenshots/screenshot7.png)
+## 
+![Konsolen](./m3-screenshots/screenshot8.png)
+## 
+![Konsolen](./m3-screenshots/screenshot9.png)
+## 
