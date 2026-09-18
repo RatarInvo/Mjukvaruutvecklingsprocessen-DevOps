@@ -17,3 +17,13 @@ client = TestClient(app)
 
 
 # Skriv ert test här:
+def test_summary_after_deleting_note() -> None:
+    client.post("/api/items", json={"text": "milk"})
+    created = client.post("/api/items", json={"text": "bread"}).json()
+
+    client.delete(f"/api/items/{created['id']}")
+
+    response = client.get("/api/items/stats")
+
+    assert response.status_code == 200
+    assert response.json() == {"count": 1, "total_characters": 4}
