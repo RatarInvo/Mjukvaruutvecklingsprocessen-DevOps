@@ -21,3 +21,33 @@ Samma sak gäller infrastrukturen. I M7 tog det många manuella steg att skapa V
 CD-steget i M9 minskar också risken för fel. I stället för att logga in på VM:en, pulla images och starta om containrar för hand sker det i rätt ordning efter att images har byggts. Automation gör därför inte bara arbetet snabbare. Den gör också att vi arbetar mer konsekvent och att samma kontroller körs varje gång.
 
 # Alexander Dammert:
+
+## 1. Produktens livscykel
+
+Själva appen var nästan likadan hela kursen. Det som växte var allt runt omkring den.
+
+Första veckorna gjorde vi allt med händerna. Vi skapade repot, skrev våra namn i README och pushade den första committen (M1). Sen låste vi main så att ingen fick skriva direkt där (M2). Allt måste gå via en pull request som den andra av oss godkände. Vi gjorde också en krock med flit. Albin och jag ändrade samma rubrik på var sin branch och sen lagade vi den tillsammans till "Albins och Alexanders anteckningar".
+
+Sen lärde vi oss att packa appen med Docker. Docker bygger en image för backend och en för frontend, och docker compose startar båda på en gång (M3). Vi delade upp jobbet så att jag gjorde `.dockerignore` för frontend och Albin för backend. I M4 hittade vi en bugg: teckenräknaren visade fel när man tog bort en anteckning. Vi skrev ett test som först blev rött, lagade koden och såg samma test bli grönt.
+
+Sen började maskinen hjälpa oss. GitHub Actions kollade varje pull request och stoppade en som var trasig (M5). Den byggde också nya images och lade dem i GHCR varje gång vi mergade (M6).
+
+I M7 satte vi upp en dator i molnet hos cPouta och byggde ihop allt för hand: nyckel, brandvägg, IP-adress, Docker och appen. I M8 byggde Terraform samma dator utifrån en fil. Vi kunde riva datorn och bygga en ny och den fick ändå samma adress. I M9 kopplade vi ihop allt. Vi lade till texten "Try adding a note below:" på sidan och efter mergen syntes den på vår nip.io-adress utan att någon av oss loggade in på servern.
+
+Ibland kändes det jobbigt att se all text i vissa milstolpar, men när man förstod helheten var instruktionerna lätta att följa. Det var bra att vi fick jobba självständigt. Genom att prova och misslyckas förstår man varför något funkar.
+
+## 2. Vad går sönder utan automation?
+
+Jag väljer det sista steget i kedjan när appen ska ut på servern.
+
+I M7 gjorde vi det för hand. Vi loggade in med SSH, skrev `docker compose pull` och sen `up -d`. Det låter som två korta rader, men mycket kunde gå fel. När jag skulle starta Docker glömde jag `sudo` och fick ett fel om att jag inte hade rättigheter. Och var paketet i GHCR fortfarande privat sade servern bara "denied".
+
+Om vi skulle göra så efter varje ändring idag skulle tre saker gå snett.
+
+För det första kunde vi köra för tidigt. Om vi kör `pull` innan de nya images är färdigbyggda får servern den gamla versionen och vi tror att allt är nytt fast det inte är det. Vår `deploy.yml` väntar tills "Publish images" har blivit grön innan den börjar. En människa gissar, maskinen väntar.
+
+För det andra kunde bara en av oss göra det. På Terraform-datorn fanns bara nyckeln från den codespace där vi körde `apply`. Nu har GitHub en egen deploy-nyckel så det spelar ingen roll vem av oss som mergar.
+
+För det tredje skulle ingen veta vad som hände. När man gör något för hand finns inget spår kvar. I Actions ser vi varje körning, vilken commit den kom från och om den blev grön eller röd.
+
+Det jag tar med mig är att automation inte bara sparar tid. Den gör samma sak i samma ordning varje gång och glömmer aldrig ett steg, som en trött människa lätt kan göra. Efter lektionen om GitHub Actions gjorde jag ett eget Python-skript. Var 15:e minut kollar det om en produkt på Verkkokauppa.com som står som "tulee pian" går att köpa. När den gör det skickar skriptet ett meddelande till mig på Discord. Då vet jag direkt utan att behöva kolla själv hela tiden.
